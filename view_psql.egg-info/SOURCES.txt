@@ -1,0 +1,11 @@
+LICENSE
+README.md
+pyproject.toml
+view_psql/__init__.py
+view_psql/cli.py
+view_psql.egg-info/PKG-INFO
+view_psql.egg-info/SOURCES.txt
+view_psql.egg-info/dependency_links.txt
+view_psql.egg-info/entry_points.txt
+view_psql.egg-info/requires.txt
+view_psql.egg-info/top_level.txt

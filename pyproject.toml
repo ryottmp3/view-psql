@@ -1,0 +1,22 @@
+[project]
+name = "view-psql"
+version = "0.1.0"
+description = "Pretty-print PostgreSQL tables with ellipsized cells"
+readme = "README.md"
+requires-python = ">=3.7"
+license = {text = "MIT"}
+authors = [
+  {name = "H. Ryott Glayzer", email = "ryottglayzer@gmail.com"}
+]
+dependencies = [
+  "psycopg2>=2.8",
+  "tabulate>=0.8"
+]
+
+[project.scripts]
+view-psql = "view_psql.cli:main"
+
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+

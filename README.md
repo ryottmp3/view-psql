@@ -1,0 +1,93 @@
+# view-psql
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Python](https://img.shields.io/badge/Python-3.7+-blue.svg)](https://www.python.org/)
+[![PyPI - Format](https://img.shields.io/pypi/format/view-psql)](https://pypi.org/project/view-psql/)
+
+`view-psql` is a command-line utility for pretty-printing PostgreSQL tables
+in a format similar to a Pandas DataFrame. It truncates long cell values
+with ellipses to ensure the output fits within typical terminal widths,
+making it easier to read structured data from the command line.
+
+## Features
+
+- Cleanly aligned columnar output
+- Truncates wide cells with `...` to fit terminal width
+- Optional column width and row limits
+- Supports PostgreSQL-style flags: `-d`, `-U`, `-t`
+- Works in standard shells and terminals
+- Lightweight dependencies: only `psycopg2` and `tabulate`
+
+## Installation
+
+### Using pipx (recommended)
+
+```bash
+pipx install view-psql
+```
+
+### Manual install from source
+
+```bash
+git clone https://github.com/yourname/view-psql.git
+cd view-psql
+python -m build
+pip install dist/view_psql-0.1.0-py3-none-any.whl
+```
+
+## Usage
+
+```bash
+view-psql -d DBNAME -U USER -t TABLE [options]
+```
+
+### Required arguments
+
+| Flag               | Description          |
+| ------------------ | -------------------- |
+| `-d`, `--database` | Name of the database |
+| `-U`, `--user`     | Database user        |
+| `-t`, `--table`    | Table to query       |
+
+### Optional arguments
+
+| Flag           | Description                            |
+| -------------- | -------------------------------------- |
+| `--host`       | Hostname (default: `localhost`)        |
+| `--port`       | Port number (default: `5432`)          |
+| `--width`      | Max column width (default: `30`)       |
+| `--limit`      | Maximum number of rows (default: `20`) |
+| `-h`, `--help` | Show help and exit                     |
+
+## Example
+
+```bash
+# Basic usage
+view-psql -d mydb -U myuser -t logs
+
+# With column width and row limit
+view-psql -d mydb -U myuser -t logs --width 40 --limit 100
+
+# Connecting to a remote host
+view-psql -d prod -U admin -t transactions --host db.example.org
+```
+
+### Output example
+
+```
++----+-------------+--------------------------------+
+| id | name        | description                    |
++----+-------------+--------------------------------+
+| 1  | MonthlyPass | Valid for all routes in Jul... |
+| 2  | DailyPass   | One-day access to any line     |
++----+-------------+--------------------------------+
+```
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+## Contributing
+
+Bug reports and pull requests are welcome. Feel free to open an issue or submit improvements via GitHub.
+

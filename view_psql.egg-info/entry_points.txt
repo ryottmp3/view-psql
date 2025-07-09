@@ -1,0 +1,2 @@
+[console_scripts]
+view-psql = view_psql.cli:main
